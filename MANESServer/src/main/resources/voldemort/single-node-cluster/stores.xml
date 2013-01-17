@@ -1,0 +1,79 @@
+<stores>
+
+  <store>
+    <name>user</name>
+    <persistence>bdb</persistence>
+    <description>User metadata</description>
+    <owners> davadria@umich.edu </owners>
+    <routing>server</routing>
+    <replication-factor>1</replication-factor>
+    <required-reads>1</required-reads>
+    <required-writes>1</required-writes>
+    <key-serializer>
+      <type>string</type>
+      <schema-info>utf8</schema-info>
+    </key-serializer>
+    <value-serializer>
+      <type>json</type>
+      <schema-info>{"secret":"string", "ip":"string", "port":"int16"}</schema-info>
+    </value-serializer>
+  </store>
+
+  <store>
+    <name>topology</name>
+    <persistence>bdb</persistence>
+    <description>Topology data e.g. in-range relationships</description>
+    <owners> davadria@umich.edu </owners>
+    <routing>server</routing>
+    <replication-factor>1</replication-factor>
+    <required-reads>1</required-reads>
+    <required-writes>1</required-writes>
+    <key-serializer>
+      <type>string</type>
+      <schema-info>utf8</schema-info>
+    </key-serializer>
+    <value-serializer>
+      <type>json</type>
+      <!-- Array of user id's -->
+      <schema-info>["int32"]</schema-info>
+    </value-serializer>
+  </store>
+
+  <store>
+    <name>wifi</name>
+    <persistence>bdb</persistence>
+    <description>User AP data</description>
+    <owners> davadria@umich.edu </owners>
+    <routing>server</routing>
+    <replication-factor>1</replication-factor>
+    <required-reads>1</required-reads>
+    <required-writes>1</required-writes>
+    <key-serializer>
+      <!-- prefix with user_ or ap_ -->
+      <type>string</type>
+      <schema-info>utf8</schema-info>
+    </key-serializer>
+    <value-serializer>
+      <type>json</type>
+      <!-- Array of integer representations of MAC addresses or user ID's -->
+      <schema-info>["int32"]</schema-info>
+    </value-serializer>
+  </store>
+
+  <!-- We are not using Views
+  <view>
+    <name>test-view</name>
+    <view-of>test</view-of>
+    <owners> ron@hogwarts.edu </owners>
+    <view-class>
+      voldemort.store.views.UpperCaseView
+    </view-class>
+    <value-serializer>
+      <type>string</type>
+    </value-serializer>
+    <transforms-serializer>
+    	<type>string</type>
+    </transforms-serializer>
+  </view>
+  -->
+</stores>

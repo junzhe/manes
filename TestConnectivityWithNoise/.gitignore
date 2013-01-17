@@ -1,0 +1,20 @@
+# Android specific settings
+.settings
+
+# Generated class and source files for the Android platform
+bin/*
+!bin/.gitignore
+gen/*
+!gen/.gitignore
+
+# Generated Robolectric Files
+tmp/*
+!tmp
+
+nbandroid
+local.properties
+ant.properties
+build.properties
+build.xml
+proguard-project.txt
+

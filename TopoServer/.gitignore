@@ -1,0 +1,7 @@
+.settings
+.project
+.classpath
+target
+server-log
+user-traces
+log

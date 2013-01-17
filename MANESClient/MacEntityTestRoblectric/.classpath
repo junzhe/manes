@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="test"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ManesClientMacEntity"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="lib/robolectric-1.1-20111208.024529-15-jar-with-dependencies.jar"/>
+	<classpathentry kind="lib" path="/ManesClientMacEntity/libs/oauth-signature-1.11.jar"/>
+	<classpathentry kind="lib" path="lib/powermock-mockito-1.4.10-full.jar"/>
+	<classpathentry kind="lib" path="lib/mockito-all-1.8.5.jar"/>
+	<classpathentry kind="lib" path="lib/powermock-easymock-1.4.10-full.jar"/>
+	<classpathentry kind="lib" path="lib/easymock-3.0.jar"/>
+	<classpathentry kind="lib" path="lib/maps.jar"/>
+	<classpathentry kind="lib" path="lib/json-20080701.jar"/>
+	<classpathentry kind="lib" path="lib/android.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

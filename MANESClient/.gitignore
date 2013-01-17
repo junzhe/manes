@@ -1,0 +1,6 @@
+.settings
+javadoc/*
+bin/*
+!bin/.gitignore
+gen/*
+!gen/.gitignore

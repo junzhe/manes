@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <!-- Title Bar -->
+
+    <RelativeLayout
+        android:id="@+id/titleBar"
+        style="@style/title_bar"
+        android:layout_width="match_parent" >
+
+        <TextView
+            style="@style/page_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/detailsTitle" />
+
+        <Button
+            android:id="@+id/registerButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:onClick="onClickRegister"
+            android:text="@string/registerButton" />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/userdataTitle" />
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:shrinkColumns="1" >
+
+        <TableRow>
+
+            <TextView
+                style="@style/row_description"
+                android:text="@string/descriptionUserId" />
+
+            <TextView
+                android:id="@+id/userIdField"
+                android:gravity="right"
+                android:padding="3dip" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                style="@style/row_description"
+                android:text="@string/descriptionServerAddress" />
+
+            <TextView
+                android:id="@+id/addressField"
+                android:gravity="right"
+                android:padding="3dip" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                style="@style/row_description"
+                android:text="@string/descriptionServerUrl" />
+
+            <TextView
+                android:id="@+id/urlField"
+                android:gravity="right"
+                android:padding="3dip" />
+        </TableRow>
+    </TableLayout>
+
+</LinearLayout>

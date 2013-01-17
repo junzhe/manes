@@ -1,0 +1,84 @@
+<stores>
+  <store>
+    <name>clientLocation</name>
+    <persistence>bdb</persistence>
+    <description>client to location map</description>
+    <owners>liuyue@umich.edu</owners>
+    <routing>client</routing>
+    <replication-factor>1</replication-factor>
+    <required-reads>1</required-reads>
+    <required-writes>1</required-writes>
+    <key-serializer>
+      <type>string</type>
+    </key-serializer>
+    <value-serializer>
+      <type>identity</type>
+    </value-serializer>
+  </store>
+  <store>
+    <name>APClient</name>
+    <persistence>bdb</persistence>
+    <description>AP to associated clients</description>
+    <owners>liuyue@umich.edu</owners>
+    <routing>client</routing>
+    <replication-factor>1</replication-factor>
+    <required-reads>1</required-reads>
+    <required-writes>1</required-writes>
+    <key-serializer>
+      <type>string</type>
+    </key-serializer>
+    <value-serializer>
+      <type>identity</type>
+    </value-serializer>
+  </store>
+  <store>
+    <name>GPSGridClient</name>
+    <persistence>bdb</persistence>
+    <description>GPSgrid to clients map</description>
+    <owners>liuyue@umich.edu</owners>
+    <routing>client</routing>
+    <replication-factor>1</replication-factor>
+    <required-reads>1</required-reads>
+    <required-writes>1</required-writes>
+    <key-serializer>
+      <type>identity</type>
+    </key-serializer>
+    <value-serializer>
+      <type>identity</type>
+    </value-serializer>
+  </store>
+  <store>
+    <name>topology</name>
+    <persistence>bdb</persistence>
+    <description>topology</description>
+    <owners>liuyue@umich.edu</owners>
+    <routing>client</routing>
+    <replication-factor>1</replication-factor>
+    <required-reads>1</required-reads>
+    <required-writes>1</required-writes>
+    <key-serializer>
+      <type>string</type>
+    </key-serializer>
+    <value-serializer>
+      <type>identity</type>
+    </value-serializer>
+  </store>
+  <store>
+    <name>user</name>
+    <persistence>bdb</persistence>
+    <description>User metadata</description>
+    <owners> davadria@umich.edu </owners>
+    <routing>server</routing>
+    <replication-factor>1</replication-factor>
+    <required-reads>1</required-reads>
+    <required-writes>1</required-writes>
+    <key-serializer>
+      <type>string</type>
+      <schema-info>utf8</schema-info>
+    </key-serializer>
+    <value-serializer>
+      <type>json</type>
+      <schema-info>{"secret":"string", "ip":"string", "port":"int16"}</schema-info>
+    </value-serializer>
+  </store>
+</stores>

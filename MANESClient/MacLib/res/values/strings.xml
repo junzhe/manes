@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World!</string>
+    <string name="app_name">MEmulatorClientLibrary</string>
+    <string name="install_failed_dialog_title">Unable to Install</string>
+    <string name="install_failed_dialog_message">Google Play or a web browser is needed to install MANES. Please install one of those options and try again.</string>
+    <string name="install_failed_dialog_neutral">OK</string>
+    <string name="manes_installer_progress_dialog_title">Installing MANES</string>
+    <string name="manes_installer_progress_dialog_message">Downloading&#8230;</string>
+    <string name="manes_installer_download_failed_dialog_title">Download failed.</string>
+    <string name="manes_installer_download_failed_dialog_message">Unable to download MANES client.  Check that you have internet access and sufficient storage space and try again.</string>
+    <string name="manes_installer_download_failed_dialog_neutral">OK</string>
+
+</resources>

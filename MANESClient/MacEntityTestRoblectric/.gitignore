@@ -1,0 +1,5 @@
+.settings
+bin/*
+!bin/.gitignore
+gen/*
+!gen/.gitignore

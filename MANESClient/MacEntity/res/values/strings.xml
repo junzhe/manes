@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MANES</string>
+    <string name="registerButton">Register</string>
+    <string name="forceRegisterButton">Force New Registration</string>
+    <string name="userdataTitle">Userdata / Debug Information</string>
+    <string name="descriptionUserId">User ID</string>
+    <string name="userIdNotSet">No assigned user ID</string>
+    <string name="service_process">org.whispercomm.manes.client.macentity</string>
+    <string name="descriptionServerAddress">Server Address</string>
+    <string name="descriptionServerUrl">Server Base URL</string>
+    <string name="detailsTitle">MANES Client Application</string>
+    <string name="agreement_activity_title">MANES Usage Agreement</string>
+    <string name="agreement_activity_button_positive">I agree.</string>
+    <string name="agreement_activity_button_negative">I decline.</string>
+    <string name="agreement_activity_checkbox_age">I am at least 13 years of age.</string>
+    <string name="agreement_activity_checkbox_accept">I understand and accept the usage agreement.</string>
+    <string name="tos"><Data><![CDATA[<p>Thanks for your interest in participating in Manes (Mobile Ad­hoc Network Emulator)! This project aims to build a large scale Mobile Ad-hoc Network (MANET) emulator with the help of hundreds of smart-phones owned by volunteers. Eventually, our goal is to build a MANET-based, censorship-resistant, open-source, secure, and private communication system. For more information, please visit <a href="http://www.whispercomm.org">http://www.whispercomm.org</a>.</p><p>Given your consent to participate, this application will periodically gather the following location-related information:<br>• GPS coordinates, if available;<br>• signal strengths and MAC addresses of visible Wifi access points;<br>• signal strengths and identifiers of visible cellular towers; and<br>• performance statistics of our experimental MANET communication protocols.</p><p>We will <b>NOT</b> gather personal or device identifiable information, i.e., names, phone numbers, IP or device MAC addresses.</p><p>Your data will be anonymized and stored on our servers.</p><p>Although we anonymize the collected location information by removing personal or device identifiable information, it is technically feasible to infer one\'s identity from location traces.  We will not do this. However, in the unlikely event that the collected location information is stolen despite our protective measures, this risk exists.</p><p>If you decide to not participate, the program will halt. If you change your mind at any point of time, please restart the application and choose “I agree.”</p><p>If you decide to participate, you will have the option to stop participating at any time. To stop participating, uninstall the application. You also have the option to have your data deleted.  Please email <a href="manes-remove@umich.edu">manes-remove@umich.edu</a> if you want to have old data deleted from our servers.</p><p>Please indicate your acceptance below. Thank you in advance!</p>]]></Data></string>
+
+</resources>

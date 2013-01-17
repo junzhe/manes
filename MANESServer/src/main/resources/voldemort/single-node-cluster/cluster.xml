@@ -1,0 +1,22 @@
+<cluster>
+  <name>manes-cluster</name>
+  <!-- We don't need zones in a single-node cluster
+  <zone>
+    <zone-id>0</zone-id>
+    <proximity-list>0</proximity-list>
+  </zone>
+  -->
+  <server>
+    <!-- Unique and sequential zone id's -->
+    <id>0</id>
+    <host>localhost</host>
+    <http-port>8081</http-port>
+    <socket-port>6666</socket-port>
+    <admin-port>6667</admin-port>
+    <partitions>0, 1</partitions> <!-- Figure out what these do better -->
+    <!-- Not using zones
+    <zone-id>0</zone-id>
+    !-->
+  </server>
+</cluster>
+

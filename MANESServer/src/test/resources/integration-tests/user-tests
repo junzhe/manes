@@ -1,0 +1,45 @@
+# Format: 
+# CreateUser <secret> <c2dm_reg_id>
+# UpdateUser <id> <new_secret> <c2dm_reg_id> <old_secret>
+# CreateInRange <id1> <id2>
+# SendNewPacket <id> <app_id> <packet_contents> <secret>
+# GetNewPackets <id> <secret>
+#
+# The following optional parameters can be added to any request
+# --r <regex response>
+# --s <response code>
+#
+# If the regex command contains whitespace, it must be surrounded with single quotes
+# Whitespace in regex is ignored and must be explicitly specified: \s
+#
+# null gives a null value
+# empty gives an empty string
+#
+# New tests begin after blank lines
+# File must end with TWO blank lines
+#
+# Create user test
+@Description="Create User Test"
+CreateUser 12345678123456781234567812345678 1 --r '\{"user_id" \s* : \s* [0-9]+\}' --s 201
+CreateUser 12345678123456781234567812345678 1 --r '\{"user_id" \s* : \s* [0-9]+\}' --s 201
+
+# Secret too short
+@Description="Secret Too Short Test"
+CreateUser 1234567812345678123456781234567 1 --r '\[\{"key":"secret","value":"1234567812345678123456781234567","error":"size \s must \s be \s between \s 32 \s and \s 100"\}\]' --s 400
+
+# Secret too long
+@Description="Secret Too Long"
+CreateUser 1234567812345678123456781234567812345678123456781234567812345678123456781234567812345678123456781234567812345678123456781234567812345678123456781234567812345678 1 --r \[\{"key":"secret","value":"1234567812345678123456781234567812345678123456781234567812345678123456781234567812345678123456781234567812345678123456781234567812345678123456781234567812345678","error":"size \s must \s be \s between \s 32 \s and \s 100"\}\] --s 400
+
+# Null secret
+@Description="Null Secret"
+CreateUser null 1 --r '\[\{"key":"secret","value":null,"error":"may \s not \s be \s null"\}\]' --s 400
+
+# Empty C2DM
+@Description="Empty C2DM"
+CreateUser 12345678123456781234567812345678 empty --r '\[\{"key":"c2dm_reg_id","value":"","error":"may \s not \s be \s empty"\}\]' --s 400
+
+# Null C2DM
+@Description="Null C2DM"
+CreateUser 12345678123456781234567812345678 null --r '\[\{"key":"c2dm_reg_id","value":null,"error":"may \s not \s be \s empty"\}\]' --s 400
+

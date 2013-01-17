@@ -1,0 +1,55 @@
+# Format: 
+# CreateUser <secret> <c2dm_reg_id>
+# UpdateUser <id> <new_secret> <c2dm_reg_id> <old_secret>
+# CreateInRange <id1> <id2>
+# SendNewPacket <id> <app_id> <packet_contents> <secret>
+# GetNewPackets <id> <secret>
+#
+# The following optional parameters can be added to any request
+# --r <regex response>
+# --s <response code>
+#
+# If the regex command contains whitespace, it must be surrounded with single quotes
+# Whitespace in regex is ignored and must be explicitly specified: \s
+#
+# null gives a null value
+# empty gives an empty string
+#
+# New tests begin after blank lines
+# File must end with TWO blank lines
+#
+# Update secret and c2dm
+@Description="Update Secret and C2DM"
+CreateUser 12345678123456781234567812345678 1
+UpdateUser 0 12345678123456781234567812345679 2 12345678123456781234567812345678 --s 200
+
+# Update secret
+@Description="Update Secret"
+CreateUser 12345678123456781234567812345678 1
+UpdateUser 0 12345678123456781234567812345679 null 12345678123456781234567812345678 --s 200
+
+# Update c2dm
+@Description="Update C2DM"
+CreateUser 12345678123456781234567812345678 1
+UpdateUser 0 null 2 12345678123456781234567812345678 --s 200
+
+# Update nothing
+@Description="Update Nothing"
+CreateUser 12345678123456781234567812345678 1
+UpdateUser 0 null null 12345678123456781234567812345678 --s 200
+
+# Update short secret
+@Description="Update Short Secret"
+CreateUser 12345678123456781234567812345678 1
+UpdateUser 0 1234567812345678123456781234567 null 12345678123456781234567812345678 --r '\[\{"key":"secret","value":"1234567812345678123456781234567","error":"size \s must \s be \s between \s 32 \s and \s 100"\}\]' --s 400
+
+# Update long secret
+@Description="Update Long Secret"
+CreateUser 12345678123456781234567812345678 1
+UpdateUser 0 12345678123456781234567812345612345678123456781234567812345612345678123456781234567812345612345678901 null 12345678123456781234567812345678 --r '\[\{"key":"secret","value":"12345678123456781234567812345612345678123456781234567812345612345678123456781234567812345612345678901","error":"size \s must \s be \s between \s 32 \s and \s 100"\}\]' --s 400
+
+# Update empty c2dm
+@Description="Update Empty C2DM"
+CreateUser 12345678123456781234567812345678 1
+UpdateUser 0 null empty 12345678123456781234567812345678 --r '\[\{"key":"c2dm_reg_id","value":"","error":"size \s must \s be \s between \s 1 \s and \s 2147483647"\}\]' --s 400
+

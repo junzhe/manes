@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# Ensure that ANDROID_SDK is set
+: ${ANDROID_SDK?"Environmental variable $ANDROID_SDK is not set.  Must contain path to Android SDK."}
+
+# Source path folders
+SRC_PATH=./MacLib/src/:./MacEntity/src:./MacEntity/gen
+
+# Classpath with compiled .class files and jars
+CLASS_PATH=${ANDROID_SDK}/platforms/android-8/android.jar:./MacEntity/lib/oauth-signature-1.10.jar
+
+# Packages to create javadocs for
+PACKAGES=org.whispercomm.manes.client.maclib
+
+# Classes to create javadocs for
+CLASSES=./MacEntity/src/org/whispercomm/manes/client/macentity/network/ManesService.java
+
+# Destination directory for generated javadocs
+DEST=./javadoc/client/
+
+# Flags
+FLAGS="-public -author"
+
+# Build the javadocs
+javadoc $FLAGS -d $DEST -classpath $CLASS_PATH -sourcepath $SRC_PATH $PACKAGES $CLASSES -linkoffline http://d.android.com/reference ${ANDROID_SDK}/docs/reference 

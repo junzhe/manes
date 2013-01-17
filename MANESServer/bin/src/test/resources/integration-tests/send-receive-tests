@@ -1,0 +1,53 @@
+# Format: 
+# CreateUser <secret> <c2dm_reg_id>
+# UpdateUser <id> <new_secret> <c2dm_reg_id> <old_secret>
+# CreateInRange <id1> <id2>
+# SendNewPacket <id> <app_id> <packet_contents> <secret>
+# GetNewPackets <id> <secret>
+#
+# The following optional parameters can be added to any request
+# --r <regex response>
+# --s <response code>
+#
+# If the regex command contains whitespace, it must be surrounded with single quotes
+# Whitespace in regex is ignored and must be explicitly specified: \s
+#
+# null gives a null value
+# empty gives an empty string
+#
+# New tests begin after blank lines
+# File must end with TWO blank lines
+#
+# Send/Receive test
+@Description="Send/Receive Test"
+CreateUser 12345678123456781234567812345678 1 --r '\{"user_id" \s* : \s* [0-9]+\}' --s 201
+CreateUser 12345678123456781234567812345679 2 --r '\{"user_id" \s* : \s* [0-9]+\}' --s 201
+CreateInRange 0 1 --s 204
+SendPacket 0 1 1 12345678123456781234567812345678 --s 201
+GetPackets 1 12345678123456781234567812345679 --r '\[\{"sender_id":[0-9]+,"app_id":[0-9]+,"timestamp":[0-9]+,"contents":"[a-zA-Z0-9=]+"\}\]' --s 200
+
+# Send packet with null app id
+@Description="Send Null App ID Packet"
+CreateUser 12345678123456781234567812345678 1 --r '\{"user_id" \s* : \s* [0-9]+\}' --s 201
+CreateUser 12345678123456781234567812345679 2 --r '\{"user_id" \s* : \s* [0-9]+\}' --s 201
+CreateInRange 0 1 --s 204
+SendPacket 1 null 1 12345678123456781234567812345679 --r '\[\{"key":"app_id","value":null,"error":"may \s not \s be \s null"\}\]' --s 400
+
+# Send packet with null contents
+@Description="Send Null Contents Packet"
+CreateUser 12345678123456781234567812345678 1 --r '\{"user_id" \s* : \s* [0-9]+\}' --s 201
+CreateUser 12345678123456781234567812345679 2 --r '\{"user_id" \s* : \s* [0-9]+\}' --s 201
+CreateInRange 0 1 --s 204
+SendPacket 1 1 null 12345678123456781234567812345679 --r '\[\{"key":"contents","value":null,"error":"may \s not \s be \s empty"\}\]' --s 400
+
+# Send packet with empty contents
+@Description="Send Empty Contents Packet"
+CreateUser 12345678123456781234567812345678 1 --r '\{"user_id" \s* : \s* [0-9]+\}' --s 201
+CreateUser 12345678123456781234567812345679 2 --r '\{"user_id" \s* : \s* [0-9]+\}' --s 201
+CreateInRange 0 1 --s 204
+SendPacket 1 1 empty 12345678123456781234567812345679 --r '\[\{"key":"contents","value":"","error":"may \s not \s be \s empty"\}\]' --s 400
+
+# Send packet from non-existent user
+@Description="Send Packet From Non-Existent User"
+SendPacket 20 1 1 12345678123456781234567812345679 --s 401
+
